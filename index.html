@@ -295,7 +295,7 @@
                     <p class="mt-6 text-gray-500 max-w-2xl mx-auto font-light">Stories that explore the boundaries of the human spirit.</p>
                 </div>
 
-                <!-- Book Grid -->
+                <!-- Book Grid (Dynamically Populated by Contentful) -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
                     <!-- Books will appear here automatically from Contentful -->
                     <div class="col-span-full text-center text-gray-400 py-12 animate-pulse">
@@ -785,6 +785,29 @@
                         }
                     }
 
+                    // Check for links
+                    const amazonUrl = book.amazonLink;
+                    // Check for PDF (assuming field name is 'pdfFile')
+                    let pdfUrl = null;
+                    if (book.pdfFile) {
+                         if (Array.isArray(book.pdfFile) && book.pdfFile.length > 0) {
+                            pdfUrl = book.pdfFile[0].fields.file.url;
+                        } else if (book.pdfFile.fields) {
+                            pdfUrl = book.pdfFile.fields.file.url;
+                        }
+                    }
+
+                    // Build Buttons
+                    let actionButtons = '';
+                    
+                    if (amazonUrl) {
+                        actionButtons += `<a href="${amazonUrl}" target="_blank" class="bg-brand-gold text-brand-royal px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-white transition inline-block m-1">Buy Now</a>`;
+                    }
+                    
+                    if (pdfUrl) {
+                        actionButtons += `<a href="${pdfUrl}" target="_blank" class="border border-white text-white px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-brand-royal transition inline-block m-1">Read Preview</a>`;
+                    }
+
                     const bookHTML = `
                     <div class="group relative" data-aos="fade-up" data-aos-delay="${index * 100}">
                         <div class="aspect-[2/3] w-full bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden relative shadow-lg">
@@ -794,7 +817,7 @@
                                 <div>
                                     <h3 class="text-2xl font-serif text-white italic mb-2">${book.title}</h3>
                                     <p class="text-gray-300 text-xs mb-6 line-clamp-4">${book.description || 'A gripping tale by Blessed Pen.'}</p>
-                                    <a href="${book.amazonLink || '#'}" target="_blank" class="bg-brand-gold text-brand-royal px-6 py-2 text-xs font-bold uppercase tracking-widest hover:bg-white transition">Buy Now</a>
+                                    ${actionButtons}
                                 </div>
                             </div>
                         </div>

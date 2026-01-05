@@ -167,7 +167,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <a href="#home" class="group flex items-center gap-3">
+                <a href="/" class="nav-link group flex items-center gap-3">
                     <div class="w-10 h-10 bg-brand-royal dark:bg-white text-white dark:text-brand-royal rounded-full flex items-center justify-center text-lg shadow-lg group-hover:scale-110 transition duration-300">
                         <i class="fas fa-feather-alt"></i>
                     </div>
@@ -179,28 +179,28 @@
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-6 lg:gap-8">
-                    <a href="#home" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                    <a href="/" class="nav-link text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
                         Home
                         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="#books" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                    <a href="/books" class="nav-link text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
                         Books
                         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="#about" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                    <a href="/about" class="nav-link text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
                         About
                         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="#blog" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                    <a href="/blog" class="nav-link text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
                         Journal
                         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="#contact" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                    <a href="/contact" class="nav-link text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
                         Contact
                         <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
                     </a>
                     
-                    <button onclick="window.location.hash='#newsletter'" class="bg-brand-royal dark:bg-brand-purple text-white px-6 py-2.5 rounded-sm font-medium text-xs uppercase tracking-widest hover:bg-brand-purple dark:hover:bg-brand-royal transition shadow-lg hover:shadow-brand-purple/20 active:scale-95">
+                    <button onclick="navigateTo('/newsletter')" class="bg-brand-royal dark:bg-brand-purple text-white px-6 py-2.5 rounded-sm font-medium text-xs uppercase tracking-widest hover:bg-brand-purple dark:hover:bg-brand-royal transition shadow-lg hover:shadow-brand-purple/20 active:scale-95">
                         Subscribe
                     </button>
 
@@ -224,11 +224,11 @@
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="fixed inset-0 bg-brand-midnight/95 backdrop-blur-xl z-[60] transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center space-y-8 text-white">
             <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-3xl opacity-70 hover:opacity-100 p-2"><i class="fas fa-times"></i></button>
-            <a href="#home" onclick="toggleMobileMenu()" class="text-3xl font-serif italic hover:text-brand-gold transition">Home</a>
-            <a href="#books" onclick="toggleMobileMenu()" class="text-3xl font-serif italic hover:text-brand-gold transition">Books</a>
-            <a href="#about" onclick="toggleMobileMenu()" class="text-3xl font-serif italic hover:text-brand-gold transition">About</a>
-            <a href="#blog" onclick="toggleMobileMenu()" class="text-3xl font-serif italic hover:text-brand-gold transition">Journal</a>
-            <a href="#contact" onclick="toggleMobileMenu()" class="text-3xl font-serif italic hover:text-brand-gold transition">Contact</a>
+            <a href="/" class="nav-link text-3xl font-serif italic hover:text-brand-gold transition">Home</a>
+            <a href="/books" class="nav-link text-3xl font-serif italic hover:text-brand-gold transition">Books</a>
+            <a href="/about" class="nav-link text-3xl font-serif italic hover:text-brand-gold transition">About</a>
+            <a href="/blog" class="nav-link text-3xl font-serif italic hover:text-brand-gold transition">Journal</a>
+            <a href="/contact" class="nav-link text-3xl font-serif italic hover:text-brand-gold transition">Contact</a>
         </div>
     </nav>
 
@@ -248,7 +248,6 @@
                         <span class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
                         New Release
                     </div>
-                    <!-- Adjusted text sizes for mobile -->
                     <h1 class="text-5xl md:text-8xl font-serif font-bold text-brand-royal dark:text-white leading-[0.9]">
                         Shadows <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-gold italic font-normal">in the</span> <br>
@@ -259,11 +258,11 @@
                         Discover the worlds woven by Blessed Pen.
                     </p>
                     <div class="flex flex-wrap gap-4 pt-4">
-                        <a href="#books" class="group relative px-8 py-4 bg-brand-royal dark:bg-white text-white dark:text-brand-royal font-serif text-lg italic pr-12 overflow-hidden shadow-xl hover:shadow-2xl transition-all active:scale-95 inline-block text-center">
+                        <a href="/books" class="nav-link group relative px-8 py-4 bg-brand-royal dark:bg-white text-white dark:text-brand-royal font-serif text-lg italic pr-12 overflow-hidden shadow-xl hover:shadow-2xl transition-all active:scale-95 inline-block text-center">
                             Explore The Library
                             <i class="fas fa-arrow-right absolute right-5 top-1/2 transform -translate-y-1/2 group-hover:translate-x-1 transition-transform"></i>
                         </a>
-                        <a href="#newsletter" class="px-8 py-4 border border-brand-royal dark:border-white text-brand-royal dark:text-white font-medium uppercase text-xs tracking-widest hover:bg-brand-royal hover:text-white dark:hover:bg-white dark:hover:text-brand-royal transition active:scale-95 inline-block text-center pt-5">
+                        <a href="/newsletter" class="nav-link px-8 py-4 border border-brand-royal dark:border-white text-brand-royal dark:text-white font-medium uppercase text-xs tracking-widest hover:bg-brand-royal hover:text-white dark:hover:bg-white dark:hover:text-brand-royal transition active:scale-95 inline-block text-center pt-5">
                             Read Free Chapter
                         </a>
                     </div>
@@ -358,9 +357,9 @@
                     </div>
                     <div class="flex gap-4 mt-4 md:mt-0">
                         <span class="text-gray-400 text-sm">Filter:</span>
-                        <a href="#" class="text-brand-royal dark:text-white font-bold text-sm underline decoration-brand-gold underline-offset-4">All</a>
-                        <a href="#" class="text-gray-500 text-sm hover:text-brand-royal transition">Writing</a>
-                        <a href="#" class="text-gray-500 text-sm hover:text-brand-royal transition">Personal</a>
+                        <a href="/blog" class="text-brand-royal dark:text-white font-bold text-sm underline decoration-brand-gold underline-offset-4">All</a>
+                        <a href="/blog" class="text-gray-500 text-sm hover:text-brand-royal transition">Writing</a>
+                        <a href="/blog" class="text-gray-500 text-sm hover:text-brand-royal transition">Personal</a>
                     </div>
                 </div>
 
@@ -373,9 +372,9 @@
         <!-- SINGLE POST VIEW -->
         <div id="single-post" class="page-section min-h-screen py-24 hidden">
             <div class="max-w-4xl mx-auto px-6 lg:px-8">
-                <a href="#blog" class="mb-8 flex items-center text-brand-purple font-bold uppercase tracking-widest text-xs hover:underline">
+                <button onclick="navigateTo('/blog')" class="mb-8 flex items-center text-brand-purple font-bold uppercase tracking-widest text-xs hover:underline">
                     <i class="fas fa-arrow-left mr-2"></i> Back to Journal
-                </a>
+                </button>
                 <div id="single-post-content">
                     <!-- Dynamic Content -->
                 </div>
@@ -548,7 +547,7 @@
                     <p class="mb-4">We use "cookies" to collect information about you and your activity across our site. A cookie is a small piece of data that our website stores on your computer, and accesses each time you visit, so we can understand how you use our site.</p>
                     
                     <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-                        <a href="#home" class="text-brand-purple font-bold uppercase tracking-widest text-xs hover:underline">&larr; Back to Home</a>
+                        <a href="/" class="nav-link text-brand-purple font-bold uppercase tracking-widest text-xs hover:underline">&larr; Back to Home</a>
                     </div>
                 </div>
             </div>
@@ -571,7 +570,7 @@
                     <p class="mb-4">The materials on Blessed Pen's website are provided on an 'as is' basis. Blessed Pen makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
                     
                     <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-                        <a href="#home" class="text-brand-purple font-bold uppercase tracking-widest text-xs hover:underline">&larr; Back to Home</a>
+                        <a href="/" class="nav-link text-brand-purple font-bold uppercase tracking-widest text-xs hover:underline">&larr; Back to Home</a>
                     </div>
                 </div>
             </div>
@@ -590,16 +589,16 @@
             <div>
                 <h5 class="font-bold uppercase tracking-widest text-xs mb-6 text-brand-gold">Explore</h5>
                 <ul class="space-y-4 text-sm text-gray-400">
-                    <li><a href="#books" class="hover:text-white transition">Books</a></li>
-                    <li><a href="#about" class="hover:text-white transition">About</a></li>
-                    <li><a href="#newsletter" class="hover:text-white transition">Newsletter</a></li>
+                    <li><a href="/books" class="nav-link hover:text-white transition">Books</a></li>
+                    <li><a href="/about" class="nav-link hover:text-white transition">About</a></li>
+                    <li><a href="/newsletter" class="nav-link hover:text-white transition">Newsletter</a></li>
                 </ul>
             </div>
             <div>
                 <h5 class="font-bold uppercase tracking-widest text-xs mb-6 text-brand-gold">Legal</h5>
                  <ul class="space-y-4 text-sm text-gray-400">
-                    <li><a href="#privacy" class="hover:text-white transition">Privacy Policy</a></li>
-                    <li><a href="#terms" class="hover:text-white transition">Terms of Service</a></li>
+                    <li><a href="/privacy" class="nav-link hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="/terms" class="nav-link hover:text-white transition">Terms of Service</a></li>
                     <li><a href="Gemini_Generated_Image_wj2qg6wj2qg6wj2q.jpg" download class="hover:text-white transition">Media Kit</a></li>
                 </ul>
             </div>
@@ -613,10 +612,10 @@
     <script>
         AOS.init({ once: true, offset: 50, duration: 800 });
 
-        // Handle routing based on URL Hash
+        // Handle routing based on path
         function router() {
-            // Get current hash, default to #home if empty
-            const hash = window.location.hash || '#home';
+            // Get current path, default to home if empty or /
+            const path = window.location.pathname;
             
             // Hide all pages
             document.querySelectorAll('.page-section').forEach(page => {
@@ -624,30 +623,52 @@
                 page.style.display = 'none';
             });
 
+            // Determine target page
+            let targetId = 'home';
+            if (path !== '/' && path !== '/index.html') {
+                targetId = path.substring(1); // remove '/' e.g., 'books'
+            }
+
             // Show target page
-            const targetId = hash.substring(1); // remove '#'
             const targetPage = document.getElementById(targetId);
             
             if (targetPage) {
                 targetPage.style.display = 'block';
                 targetPage.classList.add('active');
-                
-                // Scroll to top
                 window.scrollTo(0, 0);
             } else {
-                // Fallback if hash doesn't exist
+                // Fallback for unknown routes (404 behavior, or redirect to home)
                 document.getElementById('home').style.display = 'block';
+                // Optional: window.history.replaceState(null, '', '/');
             }
 
             // Close mobile menu if open
-            document.getElementById('mobile-menu').style.transform = 'translateX(100%)';
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(mobileMenu) mobileMenu.style.transform = 'translateX(100%)';
             
             // Refresh animations
             setTimeout(() => { AOS.refresh(); }, 100);
         }
 
-        // Listen for hash changes
-        window.addEventListener('hashchange', router);
+        // Navigate without page reload
+        window.navigateTo = function(url) {
+            window.history.pushState(null, '', url);
+            router();
+        }
+
+        // Intercept all link clicks for internal routing
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            // Check if it's a link, belongs to our domain (relative path), and not an external link/download
+            if (link && link.classList.contains('nav-link')) {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                navigateTo(href);
+            }
+        });
+
+        // Listen for back/forward buttons
+        window.addEventListener('popstate', router);
         // Run router on initial load
         window.addEventListener('load', router);
 
@@ -743,7 +764,7 @@
                     ${renderRichText(fields.body)}
                 </div>
             `;
-            // Manually switch to single post view via hash won't work well without a unique ID for every post in URL
+            // Manually switch to single post view via router won't work well without a unique ID for every post URL
             // So we handle it by hiding others and showing single post directly
             document.querySelectorAll('.page-section').forEach(p => { p.classList.remove('active'); p.style.display = 'none'; });
             document.getElementById('single-post').style.display = 'block';

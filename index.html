@@ -116,7 +116,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
-        /* Typography Polish - Improved for Mobile */
+        /* Typography Polish */
         h1, h2, h3 { letter-spacing: -0.02em; }
         .drop-cap::first-letter {
             float: left;
@@ -147,9 +147,17 @@
         /* Font Size Utility Classes */
         .text-lg-plus { font-size: 1.25rem; }
         .text-xl-plus { font-size: 1.5rem; }
+
+        /* Hide all sections by default, they will be shown by JS router */
+        .page-section {
+            display: none;
+        }
+        /* Except when explicitly active */
+        .page-section.active {
+            display: block;
+        }
     </style>
 </head>
-<!-- ADDED 'antialiased' for sharper text on mobile screens -->
 <body class="font-sans antialiased text-gray-800 bg-gray-50 dark:bg-brand-midnight dark:text-gray-200 transition-colors duration-500 relative overflow-x-hidden selection:bg-brand-gold selection:text-white">
 
     <div class="fixed inset-0 bg-noise pointer-events-none z-0"></div>
@@ -159,7 +167,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <a href="#" onclick="showPage('home')" class="group flex items-center gap-3">
+                <a href="#home" class="group flex items-center gap-3">
                     <div class="w-10 h-10 bg-brand-royal dark:bg-white text-white dark:text-brand-royal rounded-full flex items-center justify-center text-lg shadow-lg group-hover:scale-110 transition duration-300">
                         <i class="fas fa-feather-alt"></i>
                     </div>
@@ -171,13 +179,28 @@
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center gap-6 lg:gap-8">
-                    <a href="#" onclick="showPage('home')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">Home</a>
-                    <a href="#" onclick="showPage('books')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">Books</a>
-                    <a href="#" onclick="showPage('about')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">About</a>
-                    <a href="#" onclick="showPage('blog')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">Journal</a>
-                    <a href="#" onclick="showPage('contact')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">Contact</a>
+                    <a href="#home" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#books" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                        Books
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#about" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#blog" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                        Journal
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#contact" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
+                    </a>
                     
-                    <button onclick="showPage('newsletter')" class="bg-brand-royal dark:bg-brand-purple text-white px-6 py-2.5 rounded-sm font-medium text-xs uppercase tracking-widest hover:bg-brand-purple dark:hover:bg-brand-royal transition shadow-lg hover:shadow-brand-purple/20 active:scale-95">
+                    <button onclick="window.location.hash='#newsletter'" class="bg-brand-royal dark:bg-brand-purple text-white px-6 py-2.5 rounded-sm font-medium text-xs uppercase tracking-widest hover:bg-brand-purple dark:hover:bg-brand-royal transition shadow-lg hover:shadow-brand-purple/20 active:scale-95">
                         Subscribe
                     </button>
 
@@ -201,11 +224,11 @@
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="fixed inset-0 bg-brand-midnight/95 backdrop-blur-xl z-[60] transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center space-y-8 text-white">
             <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-3xl opacity-70 hover:opacity-100 p-2"><i class="fas fa-times"></i></button>
-            <a href="#" onclick="showPage('home')" class="text-3xl font-serif italic hover:text-brand-gold transition">Home</a>
-            <a href="#" onclick="showPage('books')" class="text-3xl font-serif italic hover:text-brand-gold transition">Books</a>
-            <a href="#" onclick="showPage('about')" class="text-3xl font-serif italic hover:text-brand-gold transition">About</a>
-            <a href="#" onclick="showPage('blog')" class="text-3xl font-serif italic hover:text-brand-gold transition">Journal</a>
-            <a href="#" onclick="showPage('contact')" class="text-3xl font-serif italic hover:text-brand-gold transition">Contact</a>
+            <a href="#home" onclick="toggleMobileMenu()" class="text-3xl font-serif italic hover:text-brand-gold transition">Home</a>
+            <a href="#books" onclick="toggleMobileMenu()" class="text-3xl font-serif italic hover:text-brand-gold transition">Books</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="text-3xl font-serif italic hover:text-brand-gold transition">About</a>
+            <a href="#blog" onclick="toggleMobileMenu()" class="text-3xl font-serif italic hover:text-brand-gold transition">Journal</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="text-3xl font-serif italic hover:text-brand-gold transition">Contact</a>
         </div>
     </nav>
 
@@ -213,7 +236,6 @@
     <main class="relative z-10 pt-20" id="main-content">
 
         <!-- 1. HOME: Cinematic Hero -->
-        <!-- Updated min-h-screen to work better on mobile browsers (dvh) -->
         <div id="home" class="page-section active min-h-[100dvh] flex items-center relative overflow-hidden">
             <div class="blob bg-brand-purple w-96 h-96 rounded-full top-0 left-0 mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
             <div class="blob bg-blue-600 w-96 h-96 rounded-full bottom-0 right-0 mix-blend-multiply filter blur-3xl opacity-20"></div>
@@ -237,13 +259,13 @@
                         Discover the worlds woven by Blessed Pen.
                     </p>
                     <div class="flex flex-wrap gap-4 pt-4">
-                        <button onclick="showPage('books')" class="group relative px-8 py-4 bg-brand-royal dark:bg-white text-white dark:text-brand-royal font-serif text-lg italic pr-12 overflow-hidden shadow-xl hover:shadow-2xl transition-all active:scale-95">
+                        <a href="#books" class="group relative px-8 py-4 bg-brand-royal dark:bg-white text-white dark:text-brand-royal font-serif text-lg italic pr-12 overflow-hidden shadow-xl hover:shadow-2xl transition-all active:scale-95 inline-block text-center">
                             Explore The Library
                             <i class="fas fa-arrow-right absolute right-5 top-1/2 transform -translate-y-1/2 group-hover:translate-x-1 transition-transform"></i>
-                        </button>
-                        <button onclick="showPage('newsletter')" class="px-8 py-4 border border-brand-royal dark:border-white text-brand-royal dark:text-white font-medium uppercase text-xs tracking-widest hover:bg-brand-royal hover:text-white dark:hover:bg-white dark:hover:text-brand-royal transition active:scale-95">
+                        </a>
+                        <a href="#newsletter" class="px-8 py-4 border border-brand-royal dark:border-white text-brand-royal dark:text-white font-medium uppercase text-xs tracking-widest hover:bg-brand-royal hover:text-white dark:hover:bg-white dark:hover:text-brand-royal transition active:scale-95 inline-block text-center pt-5">
                             Read Free Chapter
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -351,9 +373,9 @@
         <!-- SINGLE POST VIEW -->
         <div id="single-post" class="page-section min-h-screen py-24 hidden">
             <div class="max-w-4xl mx-auto px-6 lg:px-8">
-                <button onclick="showPage('blog')" class="mb-8 flex items-center text-brand-purple font-bold uppercase tracking-widest text-xs hover:underline">
+                <a href="#blog" class="mb-8 flex items-center text-brand-purple font-bold uppercase tracking-widest text-xs hover:underline">
                     <i class="fas fa-arrow-left mr-2"></i> Back to Journal
-                </button>
+                </a>
                 <div id="single-post-content">
                     <!-- Dynamic Content -->
                 </div>
@@ -508,6 +530,53 @@
             </div>
         </div>
 
+        <!-- 7. PRIVACY POLICY PAGE -->
+        <div id="privacy" class="page-section min-h-screen py-24">
+            <div class="max-w-4xl mx-auto px-6">
+                <h1 class="text-4xl font-serif text-brand-royal dark:text-white mb-8">Privacy Policy</h1>
+                <div class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+                    <p class="mb-4">Last Updated: January 2026</p>
+                    <p class="mb-4">Your privacy is important to us. It is Blessed Pen's policy to respect your privacy regarding any information we may collect from you across our website, https://www.blessedpen.com.</p>
+                    
+                    <h3 class="text-2xl font-serif text-brand-royal dark:text-white mt-8 mb-4">1. Information We Collect</h3>
+                    <p class="mb-4">We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.</p>
+                    
+                    <h3 class="text-2xl font-serif text-brand-royal dark:text-white mt-8 mb-4">2. Usage of Information</h3>
+                    <p class="mb-4">We may use your personal information to contact you with newsletters, marketing or promotional materials and other information that may be of interest to you. You may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or instructions provided in any email we send.</p>
+                    
+                    <h3 class="text-2xl font-serif text-brand-royal dark:text-white mt-8 mb-4">3. Cookies</h3>
+                    <p class="mb-4">We use "cookies" to collect information about you and your activity across our site. A cookie is a small piece of data that our website stores on your computer, and accesses each time you visit, so we can understand how you use our site.</p>
+                    
+                    <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+                        <a href="#home" class="text-brand-purple font-bold uppercase tracking-widest text-xs hover:underline">&larr; Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. TERMS OF SERVICE PAGE -->
+        <div id="terms" class="page-section min-h-screen py-24">
+            <div class="max-w-4xl mx-auto px-6">
+                <h1 class="text-4xl font-serif text-brand-royal dark:text-white mb-8">Terms of Service</h1>
+                <div class="prose dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+                    <p class="mb-4">Last Updated: January 2026</p>
+                    
+                    <h3 class="text-2xl font-serif text-brand-royal dark:text-white mt-8 mb-4">1. Terms</h3>
+                    <p class="mb-4">By accessing the website at https://www.blessedpen.com, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws.</p>
+                    
+                    <h3 class="text-2xl font-serif text-brand-royal dark:text-white mt-8 mb-4">2. Use License</h3>
+                    <p class="mb-4">Permission is granted to temporarily download one copy of the materials (information or software) on Blessed Pen's website for personal, non-commercial transitory viewing only.</p>
+                    
+                    <h3 class="text-2xl font-serif text-brand-royal dark:text-white mt-8 mb-4">3. Disclaimer</h3>
+                    <p class="mb-4">The materials on Blessed Pen's website are provided on an 'as is' basis. Blessed Pen makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+                    
+                    <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+                        <a href="#home" class="text-brand-purple font-bold uppercase tracking-widest text-xs hover:underline">&larr; Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
     <!-- FOOTER -->
@@ -521,17 +590,17 @@
             <div>
                 <h5 class="font-bold uppercase tracking-widest text-xs mb-6 text-brand-gold">Explore</h5>
                 <ul class="space-y-4 text-sm text-gray-400">
-                    <li><a href="#" onclick="showPage('books')" class="hover:text-white transition">Books</a></li>
-                    <li><a href="#" onclick="showPage('about')" class="hover:text-white transition">About</a></li>
-                    <li><a href="#" onclick="showPage('newsletter')" class="hover:text-white transition">Newsletter</a></li>
+                    <li><a href="#books" class="hover:text-white transition">Books</a></li>
+                    <li><a href="#about" class="hover:text-white transition">About</a></li>
+                    <li><a href="#newsletter" class="hover:text-white transition">Newsletter</a></li>
                 </ul>
             </div>
             <div>
                 <h5 class="font-bold uppercase tracking-widest text-xs mb-6 text-brand-gold">Legal</h5>
                  <ul class="space-y-4 text-sm text-gray-400">
-                    <li><a href="#" onclick="showPage('privacy')" class="hover:text-white transition">Privacy Policy</a></li>
-                    <li><a href="#" onclick="showPage('terms')" class="hover:text-white transition">Terms of Service</a></li>
-                    <li><a href="#" class="hover:text-white transition">Media Kit</a></li>
+                    <li><a href="#privacy" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="#terms" class="hover:text-white transition">Terms of Service</a></li>
+                    <li><a href="Gemini_Generated_Image_wj2qg6wj2qg6wj2q.jpg" download class="hover:text-white transition">Media Kit</a></li>
                 </ul>
             </div>
         </div>
@@ -544,19 +613,43 @@
     <script>
         AOS.init({ once: true, offset: 50, duration: 800 });
 
-        function showPage(pageId) {
+        // Handle routing based on URL Hash
+        function router() {
+            // Get current hash, default to #home if empty
+            const hash = window.location.hash || '#home';
+            
+            // Hide all pages
             document.querySelectorAll('.page-section').forEach(page => {
                 page.classList.remove('active');
                 page.style.display = 'none';
             });
-            const activePage = document.getElementById(pageId);
-            activePage.style.display = 'block';
-            activePage.classList.add('active');
+
+            // Show target page
+            const targetId = hash.substring(1); // remove '#'
+            const targetPage = document.getElementById(targetId);
             
-            window.scrollTo(0, 0);
+            if (targetPage) {
+                targetPage.style.display = 'block';
+                targetPage.classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            } else {
+                // Fallback if hash doesn't exist
+                document.getElementById('home').style.display = 'block';
+            }
+
+            // Close mobile menu if open
             document.getElementById('mobile-menu').style.transform = 'translateX(100%)';
+            
+            // Refresh animations
             setTimeout(() => { AOS.refresh(); }, 100);
         }
+
+        // Listen for hash changes
+        window.addEventListener('hashchange', router);
+        // Run router on initial load
+        window.addEventListener('load', router);
 
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
@@ -650,7 +743,12 @@
                     ${renderRichText(fields.body)}
                 </div>
             `;
-            showPage('single-post');
+            // Manually switch to single post view via hash won't work well without a unique ID for every post in URL
+            // So we handle it by hiding others and showing single post directly
+            document.querySelectorAll('.page-section').forEach(p => { p.classList.remove('active'); p.style.display = 'none'; });
+            document.getElementById('single-post').style.display = 'block';
+            document.getElementById('single-post').classList.add('active');
+            window.scrollTo(0,0);
         };
 
         function loadBlogPosts() {
@@ -773,6 +871,10 @@
         }
 
         window.addEventListener('load', () => {
+            // Initial Router check
+            router();
+            
+            // Load CMS data
             loadBlogPosts();
             loadBooks();
         });

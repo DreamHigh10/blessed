@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO METADATA (Crucial for Ranking) -->
+    <title>Blessed Pen | Bestselling Author of Psychological Thrillers</title>
+    <meta name="description" content="Official website of Blessed Pen, award-winning author of 'The Silent Echo'. Explore psychological thrillers, writing tips, and join the exclusive reader community.">
+    <meta name="keywords" content="Blessed Pen, Author, Psychological Thriller, The Silent Echo, Best Selling Books, Writing Blog, Mystery Novels">
+    <meta name="author" content="Blessed Pen">
+    <meta name="robots" content="index, follow"> <!-- Tells Google to scan this site -->
+    <link rel="canonical" href="https://www.blessedpen.com"> <!-- Prevents duplicate content issues -->
+
+    <!-- SOCIAL MEDIA PREVIEWS (Open Graph) -->
+    <meta property="og:title" content="Blessed Pen | Stories Painted in Deep Ink">
+    <meta property="og:description" content="Discover the worlds woven by Blessed Pen. Read free chapters and join the inner circle.">
+    <meta property="og:image" content="Gemini_Generated_Image_wj2qg6wj2qg6wj2q.jpg"> <!-- Updated to your image -->
+    <meta property="og:url" content="https://www.blessedpen.com">
+    <meta property="og:type" content="website">
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blessed Pen | Author Website">
+    <meta name="twitter:description" content="Official home of the bestselling thriller 'The Silent Echo'.">
+    <meta name="twitter:image" content="Gemini_Generated_Image_wj2qg6wj2qg6wj2q.jpg">
+
+    <!-- GOOGLE ANALYTICS -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VJFTBMS4QT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VJFTBMS4QT');
+    </script>
+
+    <!-- GOOGLE SCHEMA MARKUP (The "Secret Sauce" for Rich Snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Blessed Pen",
+      "url": "https://www.blessedpen.com",
+      "image": "https://www.blessedpen.com/Gemini_Generated_Image_wj2qg6wj2qg6wj2q.jpg",
+      "jobTitle": "Author",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Self-Employed"
+      },
+      "sameAs": [
+        "https://www.facebook.com/blessedpen",
+        "https://www.twitter.com/blessedpen",
+        "https://www.instagram.com/blessedpen",
+        "https://www.linkedin.com/in/blessedpen"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "The Silent Echo",
+      "author": {
+        "@type": "Person",
+        "name": "Blessed Pen"
+      },
+      "workExample": {
+        "@type": "Book",
+        "isbn": "978-3-16-148410-0",
+        "bookFormat": "https://schema.org/Hardcover",
+        "potentialAction": {
+          "@type": "ReadAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.blessedpen.com/books/silent-echo"
+          }
+        }
+      }
+    }
+    </script>
+    
+    <!-- Contentful SDK (Headless CMS) -->
+    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config for Custom Colors/Fonts -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            midnight: '#0F172A', /* Darkest Blue */
+                            royal: '#1E1B4B',    /* Deep Indigo */
+                            gold: '#C5A059',     /* Gold Accent */
+                            purple: '#581C87',   /* Deep Purple */
+                            lavender: '#E9D5FF',
+                        }
+                    },
+                    backgroundImage: {
+                        'noise': "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Icons & Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Animation Library (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Typography Polish */
+        h1, h2, h3 { letter-spacing: -0.02em; }
+        .drop-cap::first-letter {
+            float: left;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            font-weight: 700;
+            padding-right: 0.5rem;
+            color: #C5A059; /* Brand Gold */
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* 3D Book Hover */
+        .book-card {
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
+        }
+        .book-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+        }
+
+        /* Abstract Background Blobs */
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+        
+        /* Font Size Utility Classes */
+        .text-lg-plus { font-size: 1.25rem; }
+        .text-xl-plus { font-size: 1.5rem; }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-gray-50 dark:bg-brand-midnight dark:text-gray-200 transition-colors duration-500 relative overflow-x-hidden selection:bg-brand-gold selection:text-white">
+
+    <!-- Decorative Background Noise -->
+    <div class="fixed inset-0 bg-noise pointer-events-none z-0"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="fixed w-full z-50 transition-all duration-300 top-0 glass shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" onclick="showPage('home')" class="group flex items-center gap-3">
+                    <div class="w-10 h-10 bg-brand-royal dark:bg-white text-white dark:text-brand-royal rounded-full flex items-center justify-center text-lg shadow-lg group-hover:scale-110 transition duration-300">
+                        <i class="fas fa-feather-alt"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-2xl font-bold tracking-tight text-brand-royal dark:text-white leading-none">Blessed Pen</span>
+                        <span class="text-[10px] uppercase tracking-[0.2em] text-brand-gold font-semibold">Author</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#" onclick="showPage('home')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                        Home
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#" onclick="showPage('books')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                        Books
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#" onclick="showPage('about')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#" onclick="showPage('blog')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
+                        Journal
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
+                    </a>
+                    
+                    <button onclick="showPage('newsletter')" class="bg-brand-royal dark:bg-brand-purple text-white px-6 py-2.5 rounded-sm font-medium text-xs uppercase tracking-widest hover:bg-brand-purple dark:hover:bg-brand-royal transition shadow-lg hover:shadow-brand-purple/20">
+                        Subscribe
+                    </button>
+
+                    <!-- Accessibility: Text Size Toggle -->
+                    <button onclick="toggleTextSize()" class="w-8 h-8 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition font-serif font-bold" title="Increase Font Size">
+                        A+
+                    </button>
+
+                    <!-- Dark Mode Toggle -->
+                    <button onclick="toggleDarkMode()" class="w-8 h-8 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block text-brand-gold"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-brand-royal dark:text-white">
+                    <i class="fas fa-stream"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-brand-midnight/95 backdrop-blur-xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center space-y-8 text-white">
+            <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-3xl opacity-70 hover:opacity-100"><i class="fas fa-times"></i></button>
+            <a href="#" onclick="showPage('home')" class="text-3xl font-serif italic">Home</a>
+            <a href="#" onclick="showPage('books')" class="text-3xl font-serif italic">Books</a>
+            <a href="#" onclick="showPage('about')" class="text-3xl font-serif italic">About</a>
+            <a href="#" onclick="showPage('blog')" class="text-3xl font-serif italic">Journal</a>
+            <a href="#" onclick="showPage('contact')" class="text-3xl font-serif italic">Contact</a>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="relative z-10 pt-20" id="main-content">
+
+        <!-- 1. HOME: Cinematic Hero -->
+        <div id="home" class="page-section active min-h-screen flex items-center relative overflow-hidden">
+            <!-- Background gradient blobs -->
+            <div class="blob bg-brand-purple w-96 h-96 rounded-full top-0 left-0 mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+            <div class="blob bg-blue-600 w-96 h-96 rounded-full bottom-0 right-0 mix-blend-multiply filter blur-3xl opacity-20"></div>
+
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Text Content -->
+                <div class="space-y-8 z-10" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-gold/50 text-brand-gold text-xs font-bold uppercase tracking-widest bg-brand-gold/5">
+                        <span class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
+                        New Release
+                    </div>
+                    <h1 class="text-6xl md:text-8xl font-serif font-bold text-brand-royal dark:text-white leading-[0.9]">
+                        Shadows <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-gold italic font-normal">in the</span> <br>
+                        Silence
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-lg font-light leading-relaxed border-l-4 border-brand-gold pl-6">
+                        "A prose so sharp it cuts through the soul."<br>
+                        Discover the worlds woven by Blessed Pen.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <button onclick="showPage('books')" class="group relative px-8 py-4 bg-brand-royal dark:bg-white text-white dark:text-brand-royal font-serif text-lg italic pr-12 overflow-hidden shadow-xl hover:shadow-2xl transition-all">
+                            Explore The Library
+                            <i class="fas fa-arrow-right absolute right-5 top-1/2 transform -translate-y-1/2 group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                        <button onclick="showPage('newsletter')" class="px-8 py-4 border border-brand-royal dark:border-white text-brand-royal dark:text-white font-medium uppercase text-xs tracking-widest hover:bg-brand-royal hover:text-white dark:hover:bg-white dark:hover:text-brand-royal transition">
+                            Read Free Chapter
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Visual (Asymmetrical Image) -->
+                <div class="relative z-0 lg:h-[700px] flex items-center justify-center" data-aos="fade-left" data-aos-duration="1200">
+                    <!-- Abstract geometric shape behind -->
+                    <div class="absolute w-[120%] h-[80%] bg-gradient-to-tr from-brand-purple/20 to-transparent transform -rotate-6 rounded-3xl backdrop-blur-sm border border-white/10"></div>
+                    
+                    <!-- Main Book Image with Shadow -->
+                    <img src="https://placehold.co/500x750/1E1B4B/FFF?text=The+Silent+Echo" alt="Book Cover" class="relative rounded w-[60%] lg:w-[70%] shadow-2xl book-card z-20">
+                    
+                    <!-- Floating Quote Card -->
+                    <div class="absolute -bottom-10 -left-10 glass p-6 max-w-xs rounded shadow-lg z-30 hidden md:block" data-aos="fade-up" data-aos-delay="400">
+                        <div class="flex text-brand-gold mb-2 text-xs">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="font-serif italic text-lg text-brand-royal dark:text-white">"Impossible to put down. A modern classic."</p>
+                        <p class="text-xs text-gray-500 mt-2 font-bold uppercase tracking-widest">— NY Times Review</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-brand-royal dark:text-white opacity-50">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <!-- 2. BOOKS PAGE (The Showcase) -->
+        <div id="books" class="page-section min-h-screen py-24">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-20" data-aos="fade-up">
+                    <h2 class="text-5xl md:text-6xl font-serif text-brand-royal dark:text-white mb-4">The Collection</h2>
+                    <div class="w-24 h-1 bg-brand-gold mx-auto"></div>
+                    <p class="mt-6 text-gray-500 max-w-2xl mx-auto font-light">Stories that explore the boundaries of the human spirit.</p>
+                </div>
+
+                <!-- Book Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+                    <!-- Book 1 -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="100">
+                        <div class="aspect-[2/3] w-full bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden relative shadow-lg">
+                            <img src="https://placehold.co/400x600/1E1B4B/FFF?text=The+Silent+Echo" class="object-cover w-full h-full group-hover:scale-105 transition duration-700">
+                            <!-- Overlay -->
+                            <div class="absolute inset-0 bg-brand-royal/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center">
+                                <div>
+                                    <h3 class="text-2xl font-serif text-white italic mb-2">The Silent Echo</h3>
+                                    <p class="text-gray-300 text-sm mb-6">A detective's journey into madness.</p>
+                                    <button class="bg-brand-gold text-brand-royal px-6 py-2 text-xs font-bold uppercase tracking-widest">View Book</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <span class="text-xs font-bold text-brand-gold uppercase tracking-widest">Best Seller</span>
+                            <h3 class="text-2xl font-serif text-brand-royal dark:text-white mt-1">The Silent Echo</h3>
+                        </div>
+                    </div>
+
+                    <!-- Book 2 -->
+                    <div class="group relative" data-aos="fade-up" data-aos-delay="200">
+                        <div class="aspect-[2/3] w-full bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden relative shadow-lg">
+                            <img src="https://placehold.co/400x600/581C87/FFF?text=Midnight+Whispers" class="object-cover w-full h-full group-hover:scale-105 transition duration-700">
+                            <!-- Overlay -->
+                            <div class="absolute inset-0 bg-brand-purple/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center">
+                                <div>
+                                    <h3 class="text-2xl font-serif text-white italic mb-2">Midnight Whispers</h3>
+                                    <p class="text-gray-300 text-sm mb-6">Poetry for the broken hearted.</p>
+                                    <button class="bg-brand-gold text-brand-royal px-6 py-2 text-xs font-bold uppercase tracking-widest">View Book</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Poetry</span>
+                            <h3 class="text-2xl font-serif text-brand-royal dark:text-white mt-1">Midnight Whispers</h3>
+                        </div>
+                    </div>
+
+                     <!-- Book 3 -->
+                     <div class="group relative" data-aos="fade-up" data-aos-delay="300">
+                        <div class="aspect-[2/3] w-full bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden relative shadow-lg">
+                            <img src="https://placehold.co/400x600/C5A059/FFF?text=The+Golden+Hour" class="object-cover w-full h-full group-hover:scale-105 transition duration-700">
+                            <!-- Overlay -->
+                            <div class="absolute inset-0 bg-brand-midnight/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center">
+                                <div>
+                                    <h3 class="text-2xl font-serif text-white italic mb-2">The Golden Hour</h3>
+                                    <p class="text-gray-300 text-sm mb-6">Historical fiction set in 1920s Paris.</p>
+                                    <button class="bg-brand-gold text-brand-royal px-6 py-2 text-xs font-bold uppercase tracking-widest">View Book</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Historical</span>
+                            <h3 class="text-2xl font-serif text-brand-royal dark:text-white mt-1">The Golden Hour</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. ABOUT PAGE -->
+        <div id="about" class="page-section min-h-screen py-24 bg-white dark:bg-brand-midnight/50">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <!-- Photo Composition -->
+                    <div class="relative" data-aos="fade-right">
+                        <div class="absolute inset-0 bg-brand-gold transform translate-x-4 translate-y-4 rounded-lg hidden md:block"></div>
+                        <!-- Updated Image here -->
+                        <img src="Gemini_Generated_Image_wj2qg6wj2qg6wj2q.jpg" alt="Blessed Pen Portrait" class="relative rounded-lg shadow-2xl w-full grayscale hover:grayscale-0 transition duration-700">
+                    </div>
+
+                    <!-- Text -->
+                    <div class="space-y-8" data-aos="fade-left">
+                        <h2 class="text-5xl font-serif text-brand-royal dark:text-white">The Woman Behind <br> <span class="italic text-brand-purple">The Words</span></h2>
+                        <p class="drop-cap text-lg text-gray-600 dark:text-gray-300 leading-relaxed text-justify">
+                            Writing isn't just a profession; it's an excavation. I have spent the last decade digging through the soil of human emotion to find the artifacts that make us who we are. My stories are not meant to comfort you—they are meant to wake you up.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-400 font-light">
+                            When I'm not writing, I'm usually lost in a bookstore, drinking dark roast coffee, or trying to convince my dog that he is not, in fact, a person.
+                        </p>
+                        
+                        <div class="grid grid-cols-3 gap-8 border-t border-gray-200 dark:border-gray-700 pt-8">
+                            <div class="text-center">
+                                <span class="block text-4xl font-serif font-bold text-brand-gold">12</span>
+                                <span class="text-xs uppercase tracking-widest text-gray-500">Books Published</span>
+                            </div>
+                            <div class="text-center">
+                                <span class="block text-4xl font-serif font-bold text-brand-gold">1M+</span>
+                                <span class="text-xs uppercase tracking-widest text-gray-500">Copies Sold</span>
+                            </div>
+                            <div class="text-center">
+                                <span class="block text-4xl font-serif font-bold text-brand-gold">40</span>
+                                <span class="text-xs uppercase tracking-widest text-gray-500">Countries</span>
+                            </div>
+                        </div>
+
+                        <button class="border border-brand-royal dark:border-gray-500 text-brand-royal dark:text-gray-300 px-8 py-3 rounded-sm hover:bg-brand-royal hover:text-white transition uppercase text-xs tracking-widest font-bold">
+                            Download Press Kit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. BLOG PAGE -->
+        <div id="blog" class="page-section min-h-screen py-24">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-200 dark:border-gray-800 pb-8" data-aos="fade-in">
+                    <div>
+                        <span class="text-brand-purple font-bold tracking-widest uppercase text-xs mb-2 block">The Journal</span>
+                        <h2 class="text-5xl font-serif text-brand-royal dark:text-white">Notes from the Desk</h2>
+                    </div>
+                    <div class="flex gap-4 mt-4 md:mt-0">
+                        <span class="text-gray-400 text-sm">Filter:</span>
+                        <a href="#" class="text-brand-royal dark:text-white font-bold text-sm underline decoration-brand-gold underline-offset-4">All</a>
+                        <a href="#" class="text-gray-500 text-sm hover:text-brand-royal transition">Writing</a>
+                        <a href="#" class="text-gray-500 text-sm hover:text-brand-royal transition">Personal</a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Featured Article (Span 2) -->
+                    <article class="md:col-span-2 relative h-[500px] group overflow-hidden rounded-xl shadow-lg" data-aos="fade-up">
+                        <img src="https://placehold.co/800x600/1E1B4B/FFF?text=Writer+Desk" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-midnight via-brand-midnight/50 to-transparent opacity-90"></div>
+                        <div class="absolute bottom-0 left-0 p-8 md:p-12">
+                            <span class="bg-brand-gold text-brand-midnight text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-4 inline-block">Featured</span>
+                            <h3 class="text-3xl md:text-4xl font-serif text-white mb-4 leading-tight group-hover:text-brand-lavender transition">Why the "Second Book Syndrome" is a Myth</h3>
+                            <div class="flex items-center gap-4 text-gray-400 text-sm">
+                                <span><i class="far fa-calendar mr-2"></i>Oct 12, 2025</span>
+                                <span><i class="far fa-clock mr-2"></i>6 min read</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Standard Article -->
+                    <article class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 dark:border-gray-700 flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                        <div class="h-48 overflow-hidden">
+                            <img src="https://placehold.co/400x300/581C87/FFF?text=Coffee" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-8 flex-1 flex flex-col">
+                            <span class="text-brand-purple text-xs font-bold uppercase tracking-widest mb-2">Process</span>
+                            <h3 class="text-xl font-serif font-bold text-brand-royal dark:text-white mb-4">My Morning Routine</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1">How 5 AM starts and a strong espresso changed my entire drafting process.</p>
+                            <a href="#" class="text-brand-royal dark:text-white font-bold text-xs uppercase tracking-widest border-b border-brand-gold w-max pb-1">Read Article</a>
+                        </div>
+                    </article>
+
+                    <!-- Standard Article -->
+                    <article class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 dark:border-gray-700 flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                         <div class="h-48 overflow-hidden">
+                            <img src="https://placehold.co/400x300/C5A059/FFF?text=Library" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-8 flex-1 flex flex-col">
+                            <span class="text-brand-purple text-xs font-bold uppercase tracking-widest mb-2">Inspiration</span>
+                            <h3 class="text-xl font-serif font-bold text-brand-royal dark:text-white mb-4">Finding Magic in the Mundane</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1">You don't need to travel to find a story. It's waiting in your grocery store line.</p>
+                             <a href="#" class="text-brand-royal dark:text-white font-bold text-xs uppercase tracking-widest border-b border-brand-gold w-max pb-1">Read Article</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. NEWSLETTER (The Conversion) -->
+        <div id="newsletter" class="page-section min-h-screen flex items-center justify-center py-20 bg-brand-royal relative overflow-hidden">
+             <div class="absolute inset-0 bg-noise opacity-10"></div>
+             <!-- Decorative Circles -->
+             <div class="absolute top-0 right-0 w-[500px] h-[500px] border border-white/10 rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
+             <div class="absolute bottom-0 left-0 w-[800px] h-[800px] border border-white/5 rounded-full transform -translate-x-1/2 translate-y-1/2"></div>
+
+            <div class="glass max-w-4xl w-full mx-4 rounded-2xl overflow-hidden shadow-2xl relative z-10 flex flex-col md:flex-row">
+                <div class="md:w-1/2 bg-brand-midnight p-12 text-white flex flex-col justify-center">
+                    <i class="fas fa-envelope-open-text text-5xl text-brand-gold mb-6"></i>
+                    <h2 class="text-4xl font-serif mb-4">The Inner Circle</h2>
+                    <p class="text-gray-300 font-light leading-relaxed mb-6">
+                        Join 20,000+ readers. Receive my private Sunday letters, exclusive prequels, and first access to signed copies.
+                    </p>
+                    <div class="flex items-center gap-2 text-sm text-brand-gold">
+                        <i class="fas fa-gift"></i>
+                        <span>Includes free novella: "The Beginning"</span>
+                    </div>
+                    
+                    <!-- Removed Kit Link as requested -->
+                </div>
+                <div class="md:w-1/2 bg-white p-12 flex flex-col justify-center">
+                    <!-- ConvertKit Form -->
+                    <form action="https://app.convertkit.com/forms/8933850/subscriptions" method="post" class="space-y-4 relative">
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">First Name</label>
+                            <input type="text" name="fields[first_name]" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm focus:outline-none focus:border-brand-purple transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Email Address</label>
+                            <input type="email" name="email_address" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm focus:outline-none focus:border-brand-purple transition">
+                        </div>
+                        <button class="w-full bg-brand-royal text-white py-4 font-bold uppercase tracking-widest text-xs hover:bg-brand-purple transition shadow-lg">
+                            Join Now
+                        </button>
+                    </form>
+                    <p class="text-[10px] text-gray-400 text-center mt-4">100% Privacy. Unsubscribe anytime.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. CONTACT PAGE -->
+        <div id="contact" class="page-section min-h-screen py-24">
+             <div class="max-w-4xl mx-auto px-6 text-center mb-16" data-aos="fade-up">
+                <h2 class="text-5xl font-serif text-brand-royal dark:text-white mb-6">Inquiries</h2>
+                <p class="text-gray-500">I am available for select opportunities. How can we work together?</p>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-6">
+                
+                <!-- NEW: "Get Involved" Services Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" data-aos="fade-up">
+                    
+                    <!-- Card 1: Mentorship -->
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-t-4 border-brand-purple hover:-translate-y-2 transition duration-300">
+                        <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center text-brand-purple dark:text-purple-300 mb-6">
+                            <i class="fas fa-graduation-cap text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl mb-3 dark:text-white">Mentorship</h3>
+                        <p class="text-sm text-gray-500 mb-6 leading-relaxed">
+                            I offer 1-on-1 coaching for aspiring thriller writers. Let's polish your manuscript together.
+                        </p>
+                        <!-- Updated to select 'Speaking inquiry' as a fallback or relevant option, or kept Mentorship if intended -->
+                        <button onclick="document.querySelector('select[name=topic]').value='Speaking inquiry'; document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'});" class="text-xs font-bold uppercase tracking-widest text-brand-royal dark:text-white border-b border-brand-gold pb-1 hover:text-brand-purple transition">
+                            Inquire Now
+                        </button>
+                    </div>
+
+                    <!-- Card 2: Hire Me -->
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-t-4 border-brand-gold hover:-translate-y-2 transition duration-300">
+                         <div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900 rounded-full flex items-center justify-center text-brand-gold mb-6">
+                            <i class="fas fa-briefcase text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl mb-3 dark:text-white">Hire Me</h3>
+                        <p class="text-sm text-gray-500 mb-6 leading-relaxed">
+                            Need a ghostwriter, editor, or keynote speaker for your next event?
+                        </p>
+                        <!-- Updates dropdown to 'Business Opportunity' -->
+                        <button onclick="document.querySelector('select[name=topic]').value='Business Opportunity'; document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'});" class="text-xs font-bold uppercase tracking-widest text-brand-royal dark:text-white border-b border-brand-gold pb-1 hover:text-brand-purple transition">
+                            Start a Project
+                        </button>
+                    </div>
+
+                    <!-- Card 3: Reviews -->
+                    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-t-4 border-blue-500 hover:-translate-y-2 transition duration-300">
+                         <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-600 dark:text-blue-300 mb-6">
+                            <i class="fas fa-star text-xl"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl mb-3 dark:text-white">Leave a Review</h3>
+                        <p class="text-sm text-gray-500 mb-6 leading-relaxed">
+                            Read one of my books? Your reviews help other readers find my stories.
+                        </p>
+                        <!-- Updates dropdown to 'Fan Mail' -->
+                        <button onclick="document.querySelector('select[name=topic]').value='Fan Mail'; document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'});" class="text-xs font-bold uppercase tracking-widest text-brand-royal dark:text-white border-b border-brand-gold pb-1 hover:text-brand-purple transition">
+                            Submit Testimonial
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Direct Info -->
+                    <div class="space-y-8" data-aos="fade-right">
+                        <div class="bg-white dark:bg-gray-800 p-8 rounded shadow-sm border-l-4 border-brand-gold">
+                            <h3 class="font-serif text-2xl mb-2 dark:text-white">Email Inquiries</h3>
+                            <p class="text-gray-500 mb-4">For literary, press, and personal inquiries.</p>
+                            <a href="mailto:Blessedpen01@gmail.com" class="text-brand-royal dark:text-brand-lavender font-bold text-sm underline">Blessedpen01@gmail.com</a>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 p-8 rounded shadow-sm border-l-4 border-brand-purple">
+                            <h3 class="font-serif text-2xl mb-2 dark:text-white">Phone / WhatsApp</h3>
+                            <p class="text-gray-500 mb-4">Direct line for bookings and urgent matters.</p>
+                            <a href="tel:+2347015096590" class="text-brand-royal dark:text-brand-lavender font-bold text-sm underline">+234 701 509 6590</a>
+                        </div>
+
+                        <div class="flex gap-4 justify-center md:justify-start pt-8">
+                            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-brand-royal hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-brand-royal hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-brand-royal hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Form -->
+                    <div id="contact-form" class="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-xl shadow-lg" data-aos="fade-left">
+                        <!-- Formspree Form -->
+                        <form action="https://formspree.io/f/xkogvvrg" method="POST" class="space-y-6">
+                            <div class="grid grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Name</label>
+                                    <input type="text" name="name" class="w-full bg-gray-50 dark:bg-gray-700 border-b-2 border-gray-200 dark:border-gray-600 focus:border-brand-gold outline-none p-2 transition">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Email</label>
+                                    <input type="email" name="email" class="w-full bg-gray-50 dark:bg-gray-700 border-b-2 border-gray-200 dark:border-gray-600 focus:border-brand-gold outline-none p-2 transition">
+                                </div>
+                            </div>
+                            <div>
+                                 <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Topic</label>
+                                 <select name="topic" class="w-full bg-gray-50 dark:bg-gray-700 border-b-2 border-gray-200 dark:border-gray-600 focus:border-brand-gold outline-none p-2 transition">
+                                     <option value="Speaking inquiry">Speaking inquiry</option>
+                                     <option value="Press/interview">Press/interview</option>
+                                     <option value="Fan Mail">Fan Mail</option>
+                                     <option value="Business Opportunity">Business Opportunity</option>
+                                 </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Message</label>
+                                <textarea name="message" rows="4" class="w-full bg-gray-50 dark:bg-gray-700 border-b-2 border-gray-200 dark:border-gray-600 focus:border-brand-gold outline-none p-2 transition"></textarea>
+                            </div>
+                            <button class="bg-brand-royal text-white px-8 py-3 rounded-sm font-bold uppercase tracking-widest text-xs hover:shadow-lg transform hover:-translate-y-1 transition">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-midnight text-white py-16 border-t border-white/10 relative z-20">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <h4 class="font-serif text-3xl mb-4">Blessed Pen</h4>
+                <p class="text-gray-400 max-w-sm font-light">"We write to taste life twice, in the moment and in retrospect."</p>
+                <!-- Added email to footer -->
+                <p class="mt-4 text-brand-gold text-sm"><a href="mailto:Blessedpen01@gmail.com">Blessedpen01@gmail.com</a></p>
+            </div>
+            <div>
+                <h5 class="font-bold uppercase tracking-widest text-xs mb-6 text-brand-gold">Explore</h5>
+                <ul class="space-y-4 text-sm text-gray-400">
+                    <li><a href="#" onclick="showPage('books')" class="hover:text-white transition">Books</a></li>
+                    <li><a href="#" onclick="showPage('about')" class="hover:text-white transition">About</a></li>
+                    <li><a href="#" onclick="showPage('newsletter')" class="hover:text-white transition">Newsletter</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold uppercase tracking-widest text-xs mb-6 text-brand-gold">Legal</h5>
+                 <ul class="space-y-4 text-sm text-gray-400">
+                    <li><a href="#" onclick="showPage('privacy')" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="#" onclick="showPage('terms')" class="hover:text-white transition">Terms of Service</a></li>
+                    <li><a href="#" class="hover:text-white transition">Media Kit</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-white/5 text-center text-xs text-gray-600">
+            &copy; 2025 Blessed Pen. Designed with <i class="fas fa-heart text-brand-purple"></i>
+        </div>
+    </footer>
+
+    <!-- LOGIC -->
+    <script>
+        // Initialize Animations
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+        });
+
+        // Page Router
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.classList.remove('active');
+                // Optional: Fade out effect logic could go here
+                page.style.display = 'none';
+            });
+            const activePage = document.getElementById(pageId);
+            activePage.style.display = 'block';
+            activePage.classList.add('active');
+            
+            window.scrollTo(0, 0);
+            document.getElementById('mobile-menu').style.transform = 'translateX(100%)';
+            
+            // Refresh Animations on page change
+            setTimeout(() => { AOS.refresh(); }, 100);
+        }
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const current = menu.style.transform;
+            menu.style.transform = current === 'translateX(0%)' ? 'translateX(100%)' : 'translateX(0%)';
+        }
+
+        // Dark Mode
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        // Accessibility: Text Size Toggle
+        function toggleTextSize() {
+            const body = document.body;
+            if (body.classList.contains('text-lg-plus')) {
+                body.classList.remove('text-lg-plus');
+                body.classList.add('text-xl-plus'); // Extra Large
+            } else if (body.classList.contains('text-xl-plus')) {
+                body.classList.remove('text-xl-plus'); // Back to Normal
+            } else {
+                body.classList.add('text-lg-plus'); // Large
+            }
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-0');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.add('py-4');
+                nav.classList.remove('py-0');
+            }
+        });
+
+        // --- HEADLESS CMS CONFIGURATION (CONTENTFUL) ---
+        const client = contentful.createClient({
+            space: '4tnjrvcd5iwu', // Your Space ID
+            accessToken: 'iaCmE_6M35Wbi4Wy3MqJyZBiMZAZtxGFXdubXbqgQYg' // Your Access Token
+        });
+
+        // Function to fetch and display posts
+        function loadBlogPosts() {
+            const blogContainer = document.querySelector('#blog .grid'); // Target the blog grid container
+            
+            // Fetch ALL posts sorted by creation date (SAFER approach)
+            // We do NOT filter by 'content_type' in the query to prevent API errors if the ID is wrong
+            client.getEntries({
+                order: '-sys.createdAt' 
+            })
+            .then((response) => {
+                // Filter the results in JavaScript to find "BlessedPen"
+                const posts = response.items.filter(item => {
+                    const typeId = item.sys.contentType.sys.id;
+                    // Checks for 'BlessedPen', 'blessedPen', or legacy 'blogPost'
+                    return typeId === 'BlessedPen' || typeId === 'blessedPen' || typeId === 'blogPost';
+                });
+
+                if (posts.length === 0) {
+                    console.log("No posts found. Looking for Content Type ID: BlessedPen");
+                    return;
+                }
+
+                posts.forEach((post) => {
+                    const fields = post.fields;
+                    
+                    // Handle Image: Supports both "One File" and "Many Files" settings
+                    let imageUrl = 'https://placehold.co/400x300/581C87/FFF?text=New+Topic'; // Default fallback
+                    
+                    if (fields.image) {
+                        // If it is an array (Multiple files allowed), take the first one
+                        if (Array.isArray(fields.image) && fields.image.length > 0) {
+                            imageUrl = fields.image[0].fields.file.url;
+                        } 
+                        // If it is a single object (One file allowed)
+                        else if (fields.image.fields) {
+                            imageUrl = fields.image.fields.file.url;
+                        }
+                    }
+                    
+                    // Create the HTML Card
+                    const articleHTML = `
+                        <article class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 dark:border-gray-700 flex flex-col" data-aos="fade-up">
+                            <div class="h-48 overflow-hidden">
+                                <img src="${imageUrl}" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            </div>
+                            <div class="p-8 flex-1 flex flex-col">
+                                <span class="text-brand-purple text-xs font-bold uppercase tracking-widest mb-2">Latest Post</span>
+                                <h3 class="text-xl font-serif font-bold text-brand-royal dark:text-white mb-4">
+                                    ${fields.title}
+                                </h3>
+                                <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1">
+                                    ${fields.excerpt}
+                                </p>
+                                <button class="text-brand-royal dark:text-white font-bold text-xs uppercase tracking-widest border-b border-brand-gold w-max pb-1 text-left">Read Article</button>
+                            </div>
+                        </article>
+                    `;
+                    
+                    // Add to the page
+                    blogContainer.insertAdjacentHTML('afterbegin', articleHTML);
+                });
+            })
+            .catch((error) => {
+                console.error("Error fetching posts:", error);
+            });
+        }
+
+        // Run this when the page loads
+        window.addEventListener('load', loadBlogPosts);
+    </script>
+</body>
+</html>

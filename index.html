@@ -366,45 +366,19 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Featured Article (Span 2) -->
-                    <article class="md:col-span-2 relative h-[500px] group overflow-hidden rounded-xl shadow-lg" data-aos="fade-up">
-                        <img src="https://placehold.co/800x600/1E1B4B/FFF?text=Writer+Desk" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-midnight via-brand-midnight/50 to-transparent opacity-90"></div>
-                        <div class="absolute bottom-0 left-0 p-8 md:p-12">
-                            <span class="bg-brand-gold text-brand-midnight text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-sm mb-4 inline-block">Featured</span>
-                            <h3 class="text-3xl md:text-4xl font-serif text-white mb-4 leading-tight group-hover:text-brand-lavender transition">Why the "Second Book Syndrome" is a Myth</h3>
-                            <div class="flex items-center gap-4 text-gray-400 text-sm">
-                                <span><i class="far fa-calendar mr-2"></i>Oct 12, 2025</span>
-                                <span><i class="far fa-clock mr-2"></i>6 min read</span>
-                            </div>
-                        </div>
-                    </article>
+                    <!-- Posts will appear here via JS -->
+                </div>
+            </div>
+        </div>
 
-                    <!-- Standard Article -->
-                    <article class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 dark:border-gray-700 flex flex-col" data-aos="fade-up" data-aos-delay="100">
-                        <div class="h-48 overflow-hidden">
-                            <img src="https://placehold.co/400x300/581C87/FFF?text=Coffee" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                        </div>
-                        <div class="p-8 flex-1 flex flex-col">
-                            <span class="text-brand-purple text-xs font-bold uppercase tracking-widest mb-2">Process</span>
-                            <h3 class="text-xl font-serif font-bold text-brand-royal dark:text-white mb-4">My Morning Routine</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1">How 5 AM starts and a strong espresso changed my entire drafting process.</p>
-                            <a href="#" class="text-brand-royal dark:text-white font-bold text-xs uppercase tracking-widest border-b border-brand-gold w-max pb-1">Read Article</a>
-                        </div>
-                    </article>
-
-                    <!-- Standard Article -->
-                    <article class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 dark:border-gray-700 flex flex-col" data-aos="fade-up" data-aos-delay="200">
-                         <div class="h-48 overflow-hidden">
-                            <img src="https://placehold.co/400x300/C5A059/FFF?text=Library" class="w-full h-full object-cover hover:scale-105 transition duration-500">
-                        </div>
-                        <div class="p-8 flex-1 flex flex-col">
-                            <span class="text-brand-purple text-xs font-bold uppercase tracking-widest mb-2">Inspiration</span>
-                            <h3 class="text-xl font-serif font-bold text-brand-royal dark:text-white mb-4">Finding Magic in the Mundane</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1">You don't need to travel to find a story. It's waiting in your grocery store line.</p>
-                             <a href="#" class="text-brand-royal dark:text-white font-bold text-xs uppercase tracking-widest border-b border-brand-gold w-max pb-1">Read Article</a>
-                        </div>
-                    </article>
+        <!-- SINGLE POST VIEW (Hidden by default) -->
+        <div id="single-post" class="page-section min-h-screen py-24 hidden">
+            <div class="max-w-4xl mx-auto px-6 lg:px-8">
+                <button onclick="showPage('blog')" class="mb-8 flex items-center text-brand-purple font-bold uppercase tracking-widest text-xs hover:underline">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Journal
+                </button>
+                <div id="single-post-content">
+                    <!-- Dynamic Content Goes Here -->
                 </div>
             </div>
         </div>
@@ -666,6 +640,71 @@
             accessToken: 'xo0OZ6Kz6VoGUapVDxQVRYnaHWkb6kKCUVRb7rPGM2Y' // Your Access Token
         });
 
+        // Store posts globally so we can find them later
+        let allBlogPosts = [];
+
+        // Helper: Simple Rich Text Renderer
+        function renderRichText(document) {
+            // Handle plain string (Long Text)
+            if (typeof document === 'string') {
+                return document.replace(/\n/g, '<br>');
+            }
+            // Handle Contentful Rich Text Object
+            if (!document.content) return '';
+            
+            let html = '';
+            document.content.forEach(node => {
+                if (node.nodeType === 'paragraph') {
+                    // Combine all text values in the paragraph
+                    const text = node.content.map(c => c.value).join('');
+                    html += `<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">${text}</p>`;
+                } else if (node.nodeType.startsWith('heading')) {
+                    const text = node.content.map(c => c.value).join('');
+                    html += `<h3 class="text-2xl font-serif font-bold mt-8 mb-4 dark:text-white">${text}</h3>`;
+                } else if (node.nodeType === 'unordered-list') {
+                    html += '<ul class="list-disc pl-6 mb-6">';
+                    node.content.forEach(li => {
+                        const liText = li.content[0].content.map(c => c.value).join('');
+                        html += `<li class="mb-2">${liText}</li>`;
+                    });
+                    html += '</ul>';
+                }
+            });
+            return html;
+        }
+
+        // Function to open a specific post
+        window.openBlogPost = function(postId) {
+            const post = allBlogPosts.find(p => p.sys.id === postId);
+            if (!post) return;
+
+            const fields = post.fields;
+            let imageUrl = 'https://placehold.co/800x400/581C87/FFF?text=Blog+Image';
+            if (fields.image) {
+                if (Array.isArray(fields.image) && fields.image.length > 0) {
+                    imageUrl = fields.image[0].fields.file.url;
+                } else if (fields.image.fields) {
+                    imageUrl = fields.image.fields.file.url;
+                }
+            }
+
+            // Populate the Single Post View
+            const contentDiv = document.getElementById('single-post-content');
+            contentDiv.innerHTML = `
+                <img src="${imageUrl}" class="w-full h-[400px] object-cover rounded-xl shadow-lg mb-10">
+                <span class="text-brand-purple font-bold tracking-widest uppercase text-xs block mb-4">Journal Entry</span>
+                <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-royal dark:text-white mb-8 leading-tight">
+                    ${fields.title}
+                </h1>
+                <div class="prose dark:prose-invert max-w-none text-lg">
+                    ${renderRichText(fields.body)}
+                </div>
+            `;
+
+            // Switch view
+            showPage('single-post');
+        };
+
         // Function to load BLOG POSTS
         function loadBlogPosts() {
             const blogContainer = document.querySelector('#blog .grid'); 
@@ -676,13 +715,14 @@
             .then((response) => {
                 const posts = response.items.filter(item => {
                     const typeId = item.sys.contentType.sys.id;
-                    // Look for 'BlessedPen' or 'blogPost'
                     return typeId === 'BlessedPen' || typeId === 'blogPost' || typeId === 'blessedPen';
                 });
 
+                // Store for later use
+                allBlogPosts = posts;
+
                 if (posts.length > 0) {
-                    // Clear placeholders if real content exists (optional, keeping both for now for demo)
-                    // blogContainer.innerHTML = ''; 
+                    // blogContainer.innerHTML = ''; // Uncomment to clear placeholders
                 }
 
                 posts.forEach((post) => {
@@ -707,10 +747,10 @@
                                 <h3 class="text-xl font-serif font-bold text-brand-royal dark:text-white mb-4">
                                     ${fields.title}
                                 </h3>
-                                <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1">
-                                    ${fields.excerpt}
+                                <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
+                                    ${fields.excerpt || 'Click to read more...'}
                                 </p>
-                                <button class="text-brand-royal dark:text-white font-bold text-xs uppercase tracking-widest border-b border-brand-gold w-max pb-1 text-left">Read Article</button>
+                                <button onclick="openBlogPost('${post.sys.id}')" class="text-brand-royal dark:text-white font-bold text-xs uppercase tracking-widest border-b border-brand-gold w-max pb-1 text-left hover:text-brand-purple transition">Read Article</button>
                             </div>
                         </article>
                     `;

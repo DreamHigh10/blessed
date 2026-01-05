@@ -2,18 +2,17 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0"> <!-- Enhanced viewport -->
     
     <!-- SEO METADATA (Crucial for Ranking) -->
     <title>Blessed Pen | Author of Psychological Thrillers & The Silent Echo</title>
     <meta name="description" content="Official website of Blessed Pen, bestselling Nigerian author of 'The Silent Echo'. Read psychological thrillers, get writing mentorship, and join the exclusive reader community.">
     <meta name="keywords" content="Blessed Pen, Blessed Pen Author, The Silent Echo, Nigerian Thriller Authors, Psychological Thriller Books, Writing Mentorship Nigeria, Best Selling Books">
     <meta name="author" content="Blessed Pen">
-    <meta name="robots" content="index, follow"> <!-- Tells Google to scan this site -->
-    <link rel="canonical" href="https://www.blessedpen.com"> <!-- Prevents duplicate content issues -->
+    <meta name="robots" content="index, follow"> 
+    <link rel="canonical" href="https://www.blessedpen.com"> 
 
     <!-- WEBSITE ICON (FAVICON) -->
-    <!-- IMPORTANT: Rename your uploaded image file to 'author.jpg' for this to work -->
     <link rel="icon" type="image/jpeg" href="author.jpg">
 
     <!-- SOCIAL MEDIA PREVIEWS (Open Graph) -->
@@ -63,13 +62,13 @@
     }
     </script>
     
-    <!-- Contentful SDK (Headless CMS) -->
+    <!-- Contentful SDK -->
     <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Tailwind Config for Custom Colors/Fonts -->
+    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -81,10 +80,10 @@
                     },
                     colors: {
                         brand: {
-                            midnight: '#0F172A', /* Darkest Blue */
-                            royal: '#1E1B4B',    /* Deep Indigo */
-                            gold: '#C5A059',     /* Gold Accent */
-                            purple: '#581C87',   /* Deep Purple */
+                            midnight: '#0F172A', 
+                            royal: '#1E1B4B',    
+                            gold: '#C5A059',     
+                            purple: '#581C87',   
                             lavender: '#E9D5FF',
                         }
                     },
@@ -100,12 +99,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Animation Library (AOS) -->
+    <!-- Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <style>
-        /* Glassmorphism Utilities */
+        /* High-Quality Mobile Rendering Styles */
         .glass {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
@@ -117,7 +116,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
-        /* Typography Polish */
+        /* Typography Polish - Improved for Mobile */
         h1, h2, h3 { letter-spacing: -0.02em; }
         .drop-cap::first-letter {
             float: left;
@@ -125,7 +124,7 @@
             line-height: 0.8;
             font-weight: 700;
             padding-right: 0.5rem;
-            color: #C5A059; /* Brand Gold */
+            color: #C5A059;
             font-family: 'Cormorant Garamond', serif;
         }
 
@@ -138,7 +137,6 @@
             transform: translateY(-10px) rotateX(5deg);
         }
 
-        /* Abstract Background Blobs */
         .blob {
             position: absolute;
             filter: blur(80px);
@@ -151,9 +149,9 @@
         .text-xl-plus { font-size: 1.5rem; }
     </style>
 </head>
+<!-- ADDED 'antialiased' for sharper text on mobile screens -->
 <body class="font-sans antialiased text-gray-800 bg-gray-50 dark:bg-brand-midnight dark:text-gray-200 transition-colors duration-500 relative overflow-x-hidden selection:bg-brand-gold selection:text-white">
 
-    <!-- Decorative Background Noise -->
     <div class="fixed inset-0 bg-noise pointer-events-none z-0"></div>
 
     <!-- NAVIGATION -->
@@ -172,55 +170,42 @@
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#" onclick="showPage('home')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
-                        Home
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
-                    </a>
-                    <a href="#" onclick="showPage('books')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
-                        Books
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
-                    </a>
-                    <a href="#" onclick="showPage('about')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
-                        About
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
-                    </a>
-                    <a href="#" onclick="showPage('blog')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">
-                        Journal
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple transition-all group-hover:w-full"></span>
-                    </a>
+                <div class="hidden md:flex items-center gap-6 lg:gap-8">
+                    <a href="#" onclick="showPage('home')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">Home</a>
+                    <a href="#" onclick="showPage('books')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">Books</a>
+                    <a href="#" onclick="showPage('about')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">About</a>
+                    <a href="#" onclick="showPage('blog')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">Journal</a>
+                    <a href="#" onclick="showPage('contact')" class="text-sm font-medium uppercase tracking-widest hover:text-brand-purple transition relative group">Contact</a>
                     
-                    <button onclick="showPage('newsletter')" class="bg-brand-royal dark:bg-brand-purple text-white px-6 py-2.5 rounded-sm font-medium text-xs uppercase tracking-widest hover:bg-brand-purple dark:hover:bg-brand-royal transition shadow-lg hover:shadow-brand-purple/20">
+                    <button onclick="showPage('newsletter')" class="bg-brand-royal dark:bg-brand-purple text-white px-6 py-2.5 rounded-sm font-medium text-xs uppercase tracking-widest hover:bg-brand-purple dark:hover:bg-brand-royal transition shadow-lg hover:shadow-brand-purple/20 active:scale-95">
                         Subscribe
                     </button>
 
-                    <!-- Accessibility: Text Size Toggle -->
-                    <button onclick="toggleTextSize()" class="w-8 h-8 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition font-serif font-bold" title="Increase Font Size">
+                    <button onclick="toggleTextSize()" class="w-8 h-8 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition font-serif font-bold active:scale-95" title="Increase Font Size">
                         A+
                     </button>
 
-                    <!-- Dark Mode Toggle -->
-                    <button onclick="toggleDarkMode()" class="w-8 h-8 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                    <button onclick="toggleDarkMode()" class="w-8 h-8 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition active:scale-95">
                         <i class="fas fa-moon dark:hidden"></i>
                         <i class="fas fa-sun hidden dark:block text-brand-gold"></i>
                     </button>
                 </div>
 
                 <!-- Mobile Button -->
-                <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-brand-royal dark:text-white">
+                <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-brand-royal dark:text-white p-2">
                     <i class="fas fa-stream"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 bg-brand-midnight/95 backdrop-blur-xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center space-y-8 text-white">
-            <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-3xl opacity-70 hover:opacity-100"><i class="fas fa-times"></i></button>
-            <a href="#" onclick="showPage('home')" class="text-3xl font-serif italic">Home</a>
-            <a href="#" onclick="showPage('books')" class="text-3xl font-serif italic">Books</a>
-            <a href="#" onclick="showPage('about')" class="text-3xl font-serif italic">About</a>
-            <a href="#" onclick="showPage('blog')" class="text-3xl font-serif italic">Journal</a>
-            <a href="#" onclick="showPage('contact')" class="text-3xl font-serif italic">Contact</a>
+        <div id="mobile-menu" class="fixed inset-0 bg-brand-midnight/95 backdrop-blur-xl z-[60] transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center space-y-8 text-white">
+            <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-3xl opacity-70 hover:opacity-100 p-2"><i class="fas fa-times"></i></button>
+            <a href="#" onclick="showPage('home')" class="text-3xl font-serif italic hover:text-brand-gold transition">Home</a>
+            <a href="#" onclick="showPage('books')" class="text-3xl font-serif italic hover:text-brand-gold transition">Books</a>
+            <a href="#" onclick="showPage('about')" class="text-3xl font-serif italic hover:text-brand-gold transition">About</a>
+            <a href="#" onclick="showPage('blog')" class="text-3xl font-serif italic hover:text-brand-gold transition">Journal</a>
+            <a href="#" onclick="showPage('contact')" class="text-3xl font-serif italic hover:text-brand-gold transition">Contact</a>
         </div>
     </nav>
 
@@ -228,8 +213,8 @@
     <main class="relative z-10 pt-20" id="main-content">
 
         <!-- 1. HOME: Cinematic Hero -->
-        <div id="home" class="page-section active min-h-screen flex items-center relative overflow-hidden">
-            <!-- Background gradient blobs -->
+        <!-- Updated min-h-screen to work better on mobile browsers (dvh) -->
+        <div id="home" class="page-section active min-h-[100dvh] flex items-center relative overflow-hidden">
             <div class="blob bg-brand-purple w-96 h-96 rounded-full top-0 left-0 mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
             <div class="blob bg-blue-600 w-96 h-96 rounded-full bottom-0 right-0 mix-blend-multiply filter blur-3xl opacity-20"></div>
 
@@ -241,7 +226,8 @@
                         <span class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
                         New Release
                     </div>
-                    <h1 class="text-6xl md:text-8xl font-serif font-bold text-brand-royal dark:text-white leading-[0.9]">
+                    <!-- Adjusted text sizes for mobile -->
+                    <h1 class="text-5xl md:text-8xl font-serif font-bold text-brand-royal dark:text-white leading-[0.9]">
                         Shadows <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-gold italic font-normal">in the</span> <br>
                         Silence
@@ -251,11 +237,11 @@
                         Discover the worlds woven by Blessed Pen.
                     </p>
                     <div class="flex flex-wrap gap-4 pt-4">
-                        <button onclick="showPage('books')" class="group relative px-8 py-4 bg-brand-royal dark:bg-white text-white dark:text-brand-royal font-serif text-lg italic pr-12 overflow-hidden shadow-xl hover:shadow-2xl transition-all">
+                        <button onclick="showPage('books')" class="group relative px-8 py-4 bg-brand-royal dark:bg-white text-white dark:text-brand-royal font-serif text-lg italic pr-12 overflow-hidden shadow-xl hover:shadow-2xl transition-all active:scale-95">
                             Explore The Library
                             <i class="fas fa-arrow-right absolute right-5 top-1/2 transform -translate-y-1/2 group-hover:translate-x-1 transition-transform"></i>
                         </button>
-                        <button onclick="showPage('newsletter')" class="px-8 py-4 border border-brand-royal dark:border-white text-brand-royal dark:text-white font-medium uppercase text-xs tracking-widest hover:bg-brand-royal hover:text-white dark:hover:bg-white dark:hover:text-brand-royal transition">
+                        <button onclick="showPage('newsletter')" class="px-8 py-4 border border-brand-royal dark:border-white text-brand-royal dark:text-white font-medium uppercase text-xs tracking-widest hover:bg-brand-royal hover:text-white dark:hover:bg-white dark:hover:text-brand-royal transition active:scale-95">
                             Read Free Chapter
                         </button>
                     </div>
@@ -263,13 +249,9 @@
 
                 <!-- Visual (Asymmetrical Image) -->
                 <div class="relative z-0 lg:h-[700px] flex items-center justify-center" data-aos="fade-left" data-aos-duration="1200">
-                    <!-- Abstract geometric shape behind -->
                     <div class="absolute w-[120%] h-[80%] bg-gradient-to-tr from-brand-purple/20 to-transparent transform -rotate-6 rounded-3xl backdrop-blur-sm border border-white/10"></div>
-                    
-                    <!-- Main Book Image with Shadow -->
                     <img src="https://placehold.co/500x750/1E1B4B/FFF?text=The+Silent+Echo" alt="Book Cover" class="relative rounded w-[60%] lg:w-[70%] shadow-2xl book-card z-20">
                     
-                    <!-- Floating Quote Card -->
                     <div class="absolute -bottom-10 -left-10 glass p-6 max-w-xs rounded shadow-lg z-30 hidden md:block" data-aos="fade-up" data-aos-delay="400">
                         <div class="flex text-brand-gold mb-2 text-xs">
                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -286,7 +268,7 @@
             </div>
         </div>
 
-        <!-- 2. BOOKS PAGE (The Showcase) -->
+        <!-- 2. BOOKS PAGE -->
         <div id="books" class="page-section min-h-screen py-24">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <div class="text-center mb-20" data-aos="fade-up">
@@ -295,9 +277,7 @@
                     <p class="mt-6 text-gray-500 max-w-2xl mx-auto font-light">Stories that explore the boundaries of the human spirit.</p>
                 </div>
 
-                <!-- Book Grid (Dynamically Populated by Contentful) -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
-                    <!-- Books will appear here automatically from Contentful -->
                     <div class="col-span-full text-center text-gray-400 py-12 animate-pulse">
                         <i class="fas fa-spinner fa-spin mr-2"></i> Loading Books from Library...
                     </div>
@@ -309,14 +289,11 @@
         <div id="about" class="page-section min-h-screen py-24 bg-white dark:bg-brand-midnight/50">
             <div class="max-w-7xl mx-auto px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    <!-- Photo Composition -->
                     <div class="relative" data-aos="fade-right">
                         <div class="absolute inset-0 bg-brand-gold transform translate-x-4 translate-y-4 rounded-lg hidden md:block"></div>
-                        <!-- IMPORTANT: Image renamed to author.jpg for reliability -->
                         <img src="author.jpg" alt="Blessed Pen Portrait" class="relative rounded-lg shadow-2xl w-full grayscale hover:grayscale-0 transition duration-700">
                     </div>
 
-                    <!-- Text -->
                     <div class="space-y-8" data-aos="fade-left">
                         <h2 class="text-5xl font-serif text-brand-royal dark:text-white">The Woman Behind <br> <span class="italic text-brand-purple">The Words</span></h2>
                         <p class="drop-cap text-lg text-gray-600 dark:text-gray-300 leading-relaxed text-justify">
@@ -341,7 +318,7 @@
                             </div>
                         </div>
 
-                        <button class="border border-brand-royal dark:border-gray-500 text-brand-royal dark:text-gray-300 px-8 py-3 rounded-sm hover:bg-brand-royal hover:text-white transition uppercase text-xs tracking-widest font-bold">
+                        <button class="border border-brand-royal dark:border-gray-500 text-brand-royal dark:text-gray-300 px-8 py-3 rounded-sm hover:bg-brand-royal hover:text-white transition uppercase text-xs tracking-widest font-bold active:scale-95">
                             Download Press Kit
                         </button>
                     </div>
@@ -371,22 +348,21 @@
             </div>
         </div>
 
-        <!-- SINGLE POST VIEW (Hidden by default) -->
+        <!-- SINGLE POST VIEW -->
         <div id="single-post" class="page-section min-h-screen py-24 hidden">
             <div class="max-w-4xl mx-auto px-6 lg:px-8">
                 <button onclick="showPage('blog')" class="mb-8 flex items-center text-brand-purple font-bold uppercase tracking-widest text-xs hover:underline">
                     <i class="fas fa-arrow-left mr-2"></i> Back to Journal
                 </button>
                 <div id="single-post-content">
-                    <!-- Dynamic Content Goes Here -->
+                    <!-- Dynamic Content -->
                 </div>
             </div>
         </div>
 
-        <!-- 5. NEWSLETTER (The Conversion) -->
+        <!-- 5. NEWSLETTER -->
         <div id="newsletter" class="page-section min-h-screen flex items-center justify-center py-20 bg-brand-royal relative overflow-hidden">
              <div class="absolute inset-0 bg-noise opacity-10"></div>
-             <!-- Decorative Circles -->
              <div class="absolute top-0 right-0 w-[500px] h-[500px] border border-white/10 rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
              <div class="absolute bottom-0 left-0 w-[800px] h-[800px] border border-white/5 rounded-full transform -translate-x-1/2 translate-y-1/2"></div>
 
@@ -403,7 +379,6 @@
                     </div>
                 </div>
                 <div class="md:w-1/2 bg-white p-12 flex flex-col justify-center">
-                    <!-- ConvertKit Form -->
                     <form action="https://app.convertkit.com/forms/8933850/subscriptions" method="post" class="space-y-4 relative">
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">First Name</label>
@@ -413,7 +388,7 @@
                             <label class="block text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Email Address</label>
                             <input type="email" name="email_address" class="w-full bg-gray-50 border border-gray-200 p-3 rounded-sm focus:outline-none focus:border-brand-purple transition">
                         </div>
-                        <button class="w-full bg-brand-royal text-white py-4 font-bold uppercase tracking-widest text-xs hover:bg-brand-purple transition shadow-lg">
+                        <button class="w-full bg-brand-royal text-white py-4 font-bold uppercase tracking-widest text-xs hover:bg-brand-purple transition shadow-lg active:scale-95">
                             Join Now
                         </button>
                     </form>
@@ -430,10 +405,8 @@
             </div>
 
             <div class="max-w-6xl mx-auto px-6">
-                
                 <!-- NEW: "Get Involved" Services Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16" data-aos="fade-up">
-                    
                     <!-- Card 1: Mentorship -->
                     <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg border-t-4 border-brand-purple hover:-translate-y-2 transition duration-300">
                         <div class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center text-brand-purple dark:text-purple-300 mb-6">
@@ -443,7 +416,7 @@
                         <p class="text-sm text-gray-500 mb-6 leading-relaxed">
                             I offer 1-on-1 coaching for aspiring thriller writers. Let's polish your manuscript together.
                         </p>
-                        <button onclick="document.querySelector('select[name=topic]').value='Speaking inquiry'; document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'});" class="text-xs font-bold uppercase tracking-widest text-brand-royal dark:text-white border-b border-brand-gold pb-1 hover:text-brand-purple transition">
+                        <button onclick="document.querySelector('select[name=topic]').value='Speaking inquiry'; document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'});" class="text-xs font-bold uppercase tracking-widest text-brand-royal dark:text-white border-b border-brand-gold pb-1 hover:text-brand-purple transition active:scale-95">
                             Inquire Now
                         </button>
                     </div>
@@ -457,7 +430,7 @@
                         <p class="text-sm text-gray-500 mb-6 leading-relaxed">
                             Need a ghostwriter, editor, or keynote speaker for your next event?
                         </p>
-                        <button onclick="document.querySelector('select[name=topic]').value='Business Opportunity'; document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'});" class="text-xs font-bold uppercase tracking-widest text-brand-royal dark:text-white border-b border-brand-gold pb-1 hover:text-brand-purple transition">
+                        <button onclick="document.querySelector('select[name=topic]').value='Business Opportunity'; document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'});" class="text-xs font-bold uppercase tracking-widest text-brand-royal dark:text-white border-b border-brand-gold pb-1 hover:text-brand-purple transition active:scale-95">
                             Start a Project
                         </button>
                     </div>
@@ -471,11 +444,10 @@
                         <p class="text-sm text-gray-500 mb-6 leading-relaxed">
                             Read one of my books? Your reviews help other readers find my stories.
                         </p>
-                        <button onclick="document.querySelector('select[name=topic]').value='Fan Mail'; document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'});" class="text-xs font-bold uppercase tracking-widest text-brand-royal dark:text-white border-b border-brand-gold pb-1 hover:text-brand-purple transition">
+                        <button onclick="document.querySelector('select[name=topic]').value='Fan Mail'; document.getElementById('contact-form').scrollIntoView({behavior: 'smooth'});" class="text-xs font-bold uppercase tracking-widest text-brand-royal dark:text-white border-b border-brand-gold pb-1 hover:text-brand-purple transition active:scale-95">
                             Submit Testimonial
                         </button>
                     </div>
-
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -494,16 +466,15 @@
                         </div>
 
                         <div class="flex gap-4 justify-center md:justify-start pt-8">
-                            <a href="https://www.facebook.com/share/1DMHziJzeW/" target="_blank" class="w-12 h-12 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-brand-royal hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-brand-royal hover:text-white transition"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-brand-royal hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-brand-royal hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.facebook.com/share/1DMHziJzeW/" target="_blank" class="w-12 h-12 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-brand-royal hover:text-white transition active:scale-95"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-brand-royal hover:text-white transition active:scale-95"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-brand-royal hover:text-white transition active:scale-95"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="w-12 h-12 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 hover:bg-brand-royal hover:text-white transition active:scale-95"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
 
                     <!-- Form -->
                     <div id="contact-form" class="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-xl shadow-lg" data-aos="fade-left">
-                        <!-- Formspree Form -->
                         <form action="https://formspree.io/f/xkogvvrg" method="POST" class="space-y-6">
                             <div class="grid grid-cols-2 gap-6">
                                 <div>
@@ -528,7 +499,7 @@
                                 <label class="block text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Message</label>
                                 <textarea name="message" rows="4" class="w-full bg-gray-50 dark:bg-gray-700 border-b-2 border-gray-200 dark:border-gray-600 focus:border-brand-gold outline-none p-2 transition"></textarea>
                             </div>
-                            <button class="bg-brand-royal text-white px-8 py-3 rounded-sm font-bold uppercase tracking-widest text-xs hover:shadow-lg transform hover:-translate-y-1 transition">
+                            <button class="bg-brand-royal text-white px-8 py-3 rounded-sm font-bold uppercase tracking-widest text-xs hover:shadow-lg transform hover:-translate-y-1 transition active:scale-95">
                                 Send Message
                             </button>
                         </form>
@@ -545,7 +516,6 @@
             <div class="col-span-1 md:col-span-2">
                 <h4 class="font-serif text-3xl mb-4">Blessed Pen</h4>
                 <p class="text-gray-400 max-w-sm font-light">"We write to taste life twice, in the moment and in retrospect."</p>
-                <!-- Added email to footer -->
                 <p class="mt-4 text-brand-gold text-sm"><a href="mailto:Blessedpen01@gmail.com">Blessedpen01@gmail.com</a></p>
             </div>
             <div>
@@ -572,18 +542,11 @@
 
     <!-- LOGIC -->
     <script>
-        // Initialize Animations
-        AOS.init({
-            once: true,
-            offset: 50,
-            duration: 800,
-        });
+        AOS.init({ once: true, offset: 50, duration: 800 });
 
-        // Page Router
         function showPage(pageId) {
             document.querySelectorAll('.page-section').forEach(page => {
                 page.classList.remove('active');
-                // Optional: Fade out effect logic could go here
                 page.style.display = 'none';
             });
             const activePage = document.getElementById(pageId);
@@ -592,37 +555,31 @@
             
             window.scrollTo(0, 0);
             document.getElementById('mobile-menu').style.transform = 'translateX(100%)';
-            
-            // Refresh Animations on page change
             setTimeout(() => { AOS.refresh(); }, 100);
         }
 
-        // Mobile Menu
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const current = menu.style.transform;
             menu.style.transform = current === 'translateX(0%)' ? 'translateX(100%)' : 'translateX(0%)';
         }
 
-        // Dark Mode
         function toggleDarkMode() {
             document.documentElement.classList.toggle('dark');
         }
 
-        // Accessibility: Text Size Toggle
         function toggleTextSize() {
             const body = document.body;
             if (body.classList.contains('text-lg-plus')) {
                 body.classList.remove('text-lg-plus');
-                body.classList.add('text-xl-plus'); // Extra Large
+                body.classList.add('text-xl-plus');
             } else if (body.classList.contains('text-xl-plus')) {
-                body.classList.remove('text-xl-plus'); // Back to Normal
+                body.classList.remove('text-xl-plus');
             } else {
-                body.classList.add('text-lg-plus'); // Large
+                body.classList.add('text-lg-plus');
             }
         }
 
-        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -640,22 +597,17 @@
             accessToken: 'xo0OZ6Kz6VoGUapVDxQVRYnaHWkb6kKCUVRb7rPGM2Y' // Your Access Token
         });
 
-        // Store posts globally so we can find them later
         let allBlogPosts = [];
 
-        // Helper: Simple Rich Text Renderer
         function renderRichText(document) {
-            // Handle plain string (Long Text)
             if (typeof document === 'string') {
                 return document.replace(/\n/g, '<br>');
             }
-            // Handle Contentful Rich Text Object
             if (!document.content) return '';
             
             let html = '';
             document.content.forEach(node => {
                 if (node.nodeType === 'paragraph') {
-                    // Combine all text values in the paragraph
                     const text = node.content.map(c => c.value).join('');
                     html += `<p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">${text}</p>`;
                 } else if (node.nodeType.startsWith('heading')) {
@@ -673,7 +625,6 @@
             return html;
         }
 
-        // Function to open a specific post
         window.openBlogPost = function(postId) {
             const post = allBlogPosts.find(p => p.sys.id === postId);
             if (!post) return;
@@ -688,7 +639,6 @@
                 }
             }
 
-            // Populate the Single Post View
             const contentDiv = document.getElementById('single-post-content');
             contentDiv.innerHTML = `
                 <img src="${imageUrl}" class="w-full h-[400px] object-cover rounded-xl shadow-lg mb-10">
@@ -700,12 +650,9 @@
                     ${renderRichText(fields.body)}
                 </div>
             `;
-
-            // Switch view
             showPage('single-post');
         };
 
-        // Function to load BLOG POSTS
         function loadBlogPosts() {
             const blogContainer = document.querySelector('#blog .grid'); 
             
@@ -718,12 +665,7 @@
                     return typeId === 'BlessedPen' || typeId === 'blogPost' || typeId === 'blessedPen';
                 });
 
-                // Store for later use
                 allBlogPosts = posts;
-
-                if (posts.length > 0) {
-                    // blogContainer.innerHTML = ''; // Uncomment to clear placeholders
-                }
 
                 posts.forEach((post) => {
                     const fields = post.fields;
@@ -750,7 +692,7 @@
                                 <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
                                     ${fields.excerpt || 'Click to read more...'}
                                 </p>
-                                <button onclick="openBlogPost('${post.sys.id}')" class="text-brand-royal dark:text-white font-bold text-xs uppercase tracking-widest border-b border-brand-gold w-max pb-1 text-left hover:text-brand-purple transition">Read Article</button>
+                                <button onclick="openBlogPost('${post.sys.id}')" class="text-brand-royal dark:text-white font-bold text-xs uppercase tracking-widest border-b border-brand-gold w-max pb-1 text-left hover:text-brand-purple transition active:scale-95">Read Article</button>
                             </div>
                         </article>
                     `;
@@ -760,17 +702,16 @@
             .catch(console.error);
         }
 
-        // Function to load BOOKS
         function loadBooks() {
             const bookContainer = document.querySelector('#books .grid'); 
             
             client.getEntries({
-                content_type: 'book', // Specifically looking for content type 'book'
+                content_type: 'book',
                 order: '-sys.createdAt'
             })
             .then((response) => {
                 if (response.items.length > 0) {
-                    bookContainer.innerHTML = ''; // Clear the "Loading..." text
+                    bookContainer.innerHTML = ''; 
                 }
 
                 response.items.forEach((entry, index) => {
@@ -785,9 +726,7 @@
                         }
                     }
 
-                    // Check for links
                     const amazonUrl = book.amazonLink;
-                    // Check for PDF (assuming field name is 'pdfFile')
                     let pdfUrl = null;
                     if (book.pdfFile) {
                          if (Array.isArray(book.pdfFile) && book.pdfFile.length > 0) {
@@ -797,22 +736,18 @@
                         }
                     }
 
-                    // Build Buttons
                     let actionButtons = '';
-                    
                     if (amazonUrl) {
-                        actionButtons += `<a href="${amazonUrl}" target="_blank" class="bg-brand-gold text-brand-royal px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-white transition inline-block m-1">Buy Now</a>`;
+                        actionButtons += `<a href="${amazonUrl}" target="_blank" class="bg-brand-gold text-brand-royal px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-white transition inline-block m-1 active:scale-95">Buy Now</a>`;
                     }
-                    
                     if (pdfUrl) {
-                        actionButtons += `<a href="${pdfUrl}" target="_blank" class="border border-white text-white px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-brand-royal transition inline-block m-1">Read Preview</a>`;
+                        actionButtons += `<a href="${pdfUrl}" target="_blank" class="border border-white text-white px-4 py-2 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-brand-royal transition inline-block m-1 active:scale-95">Read Preview</a>`;
                     }
 
                     const bookHTML = `
                     <div class="group relative" data-aos="fade-up" data-aos-delay="${index * 100}">
                         <div class="aspect-[2/3] w-full bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden relative shadow-lg">
                             <img src="${coverUrl}" class="object-cover w-full h-full group-hover:scale-105 transition duration-700">
-                            <!-- Overlay -->
                             <div class="absolute inset-0 bg-brand-royal/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center backdrop-blur-sm">
                                 <div>
                                     <h3 class="text-2xl font-serif text-white italic mb-2">${book.title}</h3>
@@ -831,15 +766,12 @@
                 });
             })
             .catch(err => {
-                console.log("No books found or error fetching books. Ensure content type 'book' exists.");
-                // We leave the loading spinner or replace it with a message
                 if(document.querySelector('#books .grid').innerHTML.includes('Loading')) {
                      document.querySelector('#books .grid').innerHTML = '<div class="col-span-full text-center text-gray-500">No books found in the library yet.</div>';
                 }
             });
         }
 
-        // Run this when the page loads
         window.addEventListener('load', () => {
             loadBlogPosts();
             loadBooks();
